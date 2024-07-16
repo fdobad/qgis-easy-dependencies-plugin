@@ -20,8 +20,8 @@ jobs:
       run: |
          VERSION=${GITHUB_REF_NAME#v}
          echo "version is ${VERSION}"
-         sed -i -e "s/version=0.0.1/version=${VERSION}/" fireanalyticstoolbox/metadata.txt
-         git add fireanalyticstoolbox/metadata.txt
+         sed -i -e "s/version=0.0.1/version=${VERSION}/" auto_pip/metadata.txt
+         git add auto_pip/metadata.txt
 
     - name: git archive
       run: |
