@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugins ml-update="aware" ml-stage="preload" ml-view="top">
-	<pyqgis_plugin name="Auto pip installer" version="0.0.3" plugin_id="1029384756">
+	<pyqgis_plugin name="Auto pip installer" version="0.0.2" plugin_id="1029384756">
 		<description><![CDATA[When updating, metadata plugin dependencies will be installed]]></description>
 		<about><![CDATA[Proof of concept plugin that executes pip install dependencies automatically on plugin update]]></about>
-		<version>0.0.3</version>
+		<version>0.0.2</version>
 		<trusted>True</trusted>
 		<qgis_minimum_version>3.0.0</qgis_minimum_version>
 		<qgis_maximum_version>4.0.0</qgis_maximum_version>
@@ -11,7 +11,7 @@
 		<file_name>auto_pip</file_name>
 		<icon>https://pypi.org/static/images/logo-small.8998e9d1.svg</icon>
 		<author_name>fdobad</author_name>
-		<download_url>https://github.com/fdobad/qgis-easy-dependencies-plugin/releases/download/v0.0.3/auto_pip_v0.0.3.zip</download_url>
+		<download_url>https://github.com/fdobad/qgis-easy-dependencies-plugin/releases/download/v0.0.2/auto_pip_v0.0.2.zip</download_url>
 		<uploaded_by>fdobad</uploaded_by>
 		<create_date>2006-06-06T06:06:06.066666+06:00</create_date>
 		<update_date>2024-07-03T06:06:06.066666+06:00</update_date>
