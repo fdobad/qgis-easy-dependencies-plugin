@@ -48,9 +48,9 @@ class AutoPipInstallerPlugin(object):
 
     def __init__(self):
         self.provider = None
-        from .once_pip import once_pip
+        from . import dependencies_handler
 
-        once_pip()
+        dependencies_handler.run()
 
     def initProcessing(self):
         """Init Processing provider for QGIS >= 3.8."""
