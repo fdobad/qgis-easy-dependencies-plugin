@@ -6,19 +6,31 @@ Get interactive automatic checking and installation of python dependencies on pl
 - Put `dependencies_handler.[py,txt]` files in your plugin folder, 
 - Add two lines to your plugin initialization code:
 
-    def __init__(self):
-        self.provider = None
-        from . import dependencies_handler
-
-        dependencies_handler.run()
+        def __init__(self):
+            self.provider = None
+            from . import dependencies_handler
+    
+            dependencies_handler.run()
 
 A example plugin named `auto_pip` is provided!
 
 ## Description
 
-This addon code `dependencies_handler.py` runs on plugin initialization, checking for the presence of a python dependency listed in `dependencies_handler.txt` in the python environment. If the dependency is not and exact match, the user is prompted to allow running of `pip install <package>` to install the required dependency.
+This addon code `dependencies_handler.py` runs on plugin initialization, checking for the presence of a python dependency listed in `dependencies_handler.txt` in the python environment. If the dependency is not an exact match, the user is prompted to allow background running of `pip install <package>` to install the required dependency.
+
 Also included is logic to reload the installed package modules in the current QGIS python environment, so that the plugin can use the newly installed package without restarting QGIS.
-Finally, the user is given the option to disable future dependency checks implemented by writing a `skip_checking=True` line in the `dependencies_handler.txt` file. This feature is also useful for plugin developers to avoid prompting users during development!
+
+Finally, the user is given the option to disable future dependency checks implemented by writing a `skip_checking=True` line in the `dependencies_handler.txt` file.
+
+This feature is also useful for plugin developers to avoid prompting users during development!
+
+## Changelog
+- 2025-11-27: removed `distutils` dependency. Although a [migration to `packaging` was recommended](https://peps.python.org/pep-0632/#migration-advice) and [QGIS seems to include it](https://github.com/search?q=repo%3Aqgis%2FQGIS+from+packaging&type=code), it is not a python stdlib; so the simplest approach was taken: "do version strings match?", taken directly from `importlib`.
+
+## TODO
+- migrate configparser to toml
+- parse a list of dependencies
+- parse inequalities of version dependencies (only exact match is implemented)
 
 ## Proof of concept
 Relies on setting a custom repo store and two plugin releases with metadata.txt:plugin_dependencies pointing the same package but different versions, to test what happens on update.
