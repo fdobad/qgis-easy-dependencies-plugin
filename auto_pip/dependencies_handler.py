@@ -18,11 +18,11 @@ def run():
     # get the plugin name from metadata.txt
     cp = ConfigParser()
     cp.read(Path(__file__).parent / "metadata.txt")
+    # cp.read(Path.cwd() / "metadata.txt")
     plugin_name = cp.get("general", "name")
 
-    # SWITCH COMENT IN PRODUCTION
-    # config_file = Path().cwd() / "dependencies_handler.txt"
     config_file = Path(__file__).parent / "dependencies_handler.txt"
+    # config_file = Path().cwd() / "dependencies_handler.txt"
     if not config_file.is_file():
         QgsMessageLog().logMessage(
             f"Plugin {plugin_name}: dependencies_handler.txt not found! (create this file to enable checking)",
